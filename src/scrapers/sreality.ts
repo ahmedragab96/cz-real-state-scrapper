@@ -7,6 +7,14 @@ const limit = pLimit(5);
 
 const instance = axios.create({
   baseURL: 'https://www.sreality.cz/api/cs/v2',
+  headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "cs-CZ,cs;q=0.9,en;q=0.8",
+    "Referer": "https://www.sreality.cz/",
+  },
+  timeout: 10000,
 });
 
 const mapPropertyListings = (listings: Record<string, PropertyListing[]>) => {
