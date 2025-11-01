@@ -51,19 +51,6 @@ app.get("/properties/:id", async (req: Request, res: Response) => {
   }
 });
 
-// Schedule the job to run every day at 7 AM
-cron.schedule("* * * * *", async () => {
-  try {
-    console.log("Starting scheduled job to fetch properties");
-    await fetchRealStateJob();
-    console.log("Job completed successfully");
-  } catch (err) {
-    console.error("Job failed:", err);
-  }
-}, {
-  timezone: "Europe/Prague"
-});
-
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

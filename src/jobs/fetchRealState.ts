@@ -3,6 +3,7 @@ import { sendEmail } from "../email/sendEmail";
 import { filterNewListings, saveRegionListingsToDB } from "../db/mongo";
 
 export const fetchRealStateJob = async () => {
+  console.log("Starting scheduled job to fetch properties");
   const listings = await fetchSrealityProperties();
   const newListings = await filterNewListings(listings.allPropertiesWithDetails);
 
@@ -13,4 +14,5 @@ export const fetchRealStateJob = async () => {
   await sendEmail(newListings);
   // Save listings to database
   await saveRegionListingsToDB(newListings);
+  console.log("Job completed successfully");
 };
