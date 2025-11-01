@@ -1,8 +1,10 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import cron from "node-cron";
 import { fetchProperties as fetchSrealityProperties, fetchPropertyDetails } from "./scrapers/sreality";
 import { sendEmail } from "./email/sendEmail";
 import { filterNewListings, saveRegionListingsToDB } from "./db/mongo";
+import { fetchRealStateJob } from "./jobs/fetchRealState";
 
 dotenv.config();
 
@@ -47,6 +49,19 @@ app.get("/properties/:id", async (req: Request, res: Response) => {
   } catch (err: any) {
 
   }
+});
+
+// Schedule the job to run every day at 7 AM
+cron.schedule("* * * * *", async () => {
+  try {
+    console.log("Starting scheduled job to fetch properties");
+    await fetchRealStateJob();
+    console.log("Job completed successfully");
+  } catch (err) {
+    console.error("Job failed:", err);
+  }
+}, {
+  timezone: "Europe/Prague"
 });
 
 app.listen(PORT, () => {
