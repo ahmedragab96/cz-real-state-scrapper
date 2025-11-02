@@ -31,12 +31,12 @@ app.get("/properties", async (req: Request, res: Response) => {
       return;
     }
     // Send email with new listings
-    await sendEmail(newListings);
+    // await sendEmail(newListings);
     // Save listings to database
-    await saveRegionListingsToDB(newListings);
+    // await saveRegionListingsToDB(newListings);
     res.json({
       success: true,
-      count: Object.values(listings.allPropertiesWithDetails).reduce((sum, p) => sum + p.count, 0),
+      count: Object.values(newListings).reduce((sum, p) => sum + p.count, 0),
       listings: newListings,
     });
   } catch (err: any) {

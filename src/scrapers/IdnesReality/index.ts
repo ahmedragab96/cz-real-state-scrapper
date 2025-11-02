@@ -37,6 +37,7 @@ const mapIdnesListing = (listing: IdnesPropertyListing): propertyInfo => {
     images: listing.img ? [listing.img] : [],
     landArea: landArea || undefined,
     builtUpArea: builtUpArea || undefined,
+    updated: 'idnes'
   };
 }
 
