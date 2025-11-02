@@ -95,7 +95,7 @@ export async function filterNewListings(regionListings: RegionListings) {
       const existingUpdated = existingMap.get(id);
       if (!existingUpdated) return true;
       // Compare last_updated timestamps, return true if listing is newer
-      return listing.updated ? existingUpdated !== listing.updated : false;
+      return listing.updated !== null ? existingUpdated !== listing.updated : false;
     });
 
     if (newListings.length > 0) {
