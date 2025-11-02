@@ -50,18 +50,18 @@ export const PRICE_TO = 6000000; // in CZK
 export interface PropertyListing {
   id: string;
   title: string;
-  location: {
-    longitude: number;
-    latitude: number;
-    locality: string;
+  location?: {
+    longitude?: number;
+    latitude?: number;
+    locality?: string;
   };
   price: string;
-  isAuction: boolean;
-  company: {
+  isAuction?: boolean;
+  company?: {
     name: string;
     logoUrl?: string;
   };
-  isNew: boolean;
+  isNew?: boolean;
 }
 
 export interface PropertyDetails {

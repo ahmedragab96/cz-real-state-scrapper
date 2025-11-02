@@ -1,4 +1,5 @@
-import { ESTATE_AREA_FROM, PRICE_TO, PropertyDetails, propertyInfo, PropertyListing } from "./types";
+import { extractLandArea } from "../../utils/extractLandArea";
+import { ESTATE_AREA_FROM, PRICE_TO, PropertyDetails, propertyInfo, PropertyListing } from "../types";
 
 export const mapPropertyListing = (property: any) => ({
   id: property.hash_id || property.hash || property.id,
@@ -16,12 +17,6 @@ export const mapPropertyListing = (property: any) => ({
   },
   isNew: property.new,
 });
-
-function extractLandArea(name: string): number | null {
-  const match = name.match(/pozemek\s+([\d\s]+)\s*m²/i);
-  if (!match) return null;
-  return parseInt(match[1].replace(/\s/g, ""), 10);
-}
 
 // this happens before mapping. 
 export const filterValidProperties = (property: any) => {

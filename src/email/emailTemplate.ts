@@ -94,7 +94,7 @@ export function generateListingsEmail(regionListings: RegionListings) {
                   <mj-text css-class="listing-title">
                     ${listing.title}
                   </mj-text>
-                  <mj-text css-class="locality">🗺️ ${listing.location.locality}</mj-text>
+                  <mj-text css-class="locality">🗺️ ${listing.location?.locality}</mj-text>
                   <mj-text css-class="price">💰 ${listing.price} Kč</mj-text>
                   <mj-text css-class="info">🌿 Land: ${listing.landArea ?? "N/A"} m²</mj-text>
                   <mj-button

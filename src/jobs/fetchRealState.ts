@@ -1,4 +1,4 @@
-import { fetchProperties as fetchSrealityProperties } from "../scrapers/sreality";
+import { fetchProperties as fetchSrealityProperties } from "../scrapers/Sreality";
 import { sendEmail } from "../email/sendEmail";
 import { filterNewListings, saveRegionListingsToDB } from "../db/mongo";
 

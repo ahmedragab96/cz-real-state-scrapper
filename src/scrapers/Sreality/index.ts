@@ -1,6 +1,6 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
-import { PropertyDetails, PropertyListing, CZ_COUNTRY_ID, BUILDING_CONDITION, CATEGORY_MAIN_CB_HOUSE, CATEGORY_SUB_CB, CATEGORY_TYPE_CB_SALE, DISTRICT_IDS, ESTATE_AREA_FROM, PRICE_TO, RegionListings, propertyInfo } from './types';
+import { PropertyDetails, PropertyListing, CZ_COUNTRY_ID, BUILDING_CONDITION, CATEGORY_MAIN_CB_HOUSE, CATEGORY_SUB_CB, CATEGORY_TYPE_CB_SALE, DISTRICT_IDS, ESTATE_AREA_FROM, PRICE_TO, RegionListings, propertyInfo } from '../types';
 import { filterValidProperties, mapPropertyDetails, mapPropertyListing } from './mappers';
 
 const limit = pLimit(5);
