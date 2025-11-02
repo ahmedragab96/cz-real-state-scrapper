@@ -16,24 +16,24 @@ const PORT = process.env.PORT || 3000;
 app.get("/properties", async (req: Request, res: Response) => {
   try {
     const Srealitylistings = await fetchSrealityProperties();
-    
-    // if (Object.keys(newListings).length <= 0) {
-      //   res.json({
-        //     success: true,
-        //     message: "No new listings found",
-        //   });
-        //   return;
-        // }
-        // // Send email with new listings
-        // await sendEmail(newListings);
-        // // Save listings to database
-        // await saveRegionListingsToDB(newListings);
-        const IdnesListings = await fetchIdnesListings();
-        const listings = mergeRegionListings(
-          Srealitylistings.allPropertiesWithDetails,
-          IdnesListings
-        );
-        const newListings = await filterNewListings(listings.allPropertiesWithDetails);
+    const IdnesListings = await fetchIdnesListings();
+    const listings = mergeRegionListings(
+      Srealitylistings.allPropertiesWithDetails,
+      IdnesListings
+    );
+    const newListings = await filterNewListings(listings.allPropertiesWithDetails);
+
+    if (Object.keys(newListings).length <= 0) {
+      res.json({
+        success: true,
+        message: "No new listings found",
+      });
+      return;
+    }
+    // Send email with new listings
+    await sendEmail(newListings);
+    // Save listings to database
+    await saveRegionListingsToDB(newListings);
     res.json({
       success: true,
       count: Object.values(listings.allPropertiesWithDetails).reduce((sum, p) => sum + p.count, 0),
