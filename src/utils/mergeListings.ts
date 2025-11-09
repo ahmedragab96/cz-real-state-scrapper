@@ -53,7 +53,7 @@ export function mergeRegionListings(
 }
 
 function normalizePrice(price: string): number {
-  return parseInt(price.replace(/[^\d]/g, ""), 10);
+  return parseInt(price?.replace(/[^\d]/g, "") || "0", 10);
 }
 
 function isSrealityListing(listing: propertyInfo): boolean {
