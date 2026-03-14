@@ -43,9 +43,9 @@ export const CATEGORY_SUB_CB = [37, 43]; // 37 - rodinne domy, 43 - cottage
 
 export const BUILDING_CONDITION = [1, 2]; // 1 - velmi dobry, 2 - dobry
 
-export const ESTATE_AREA_FROM = 1000; // in m²
+export const ESTATE_AREA_FROM = 1200; // in m²
 
-export const PRICE_TO = 6000000; // in CZK
+export const PRICE_TO = 7000000; // in CZK
 
 export interface PropertyListing {
   id: string;
